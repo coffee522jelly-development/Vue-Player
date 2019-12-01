@@ -27,7 +27,7 @@
         </div>
     
         <div id="loop">
-            <input type="checkbox" id="box-1">
+            <input type="checkbox" id="box-1" id="loop">
             <label for="box-1">Loop</label>
           <!--<p>Loop
             <input v-on:click="Loop" Velue="Loop" type="checkbox"></p>-->
@@ -36,7 +36,7 @@
 
       <div id="caption">
           <p id="Track">Track： <span id="name">{{Track}}</span></p>
-          <p id="Size">Size： <span id="size">{{Size}}</span</p>
+          <p id="Time">Time： <span id="Time">{{Time}}</span</p>
           <p id="Recently">Recently： <span id="daytime">{{Recently}}</span></p>
       </div>
   </div>
@@ -57,8 +57,13 @@
     var audioElem;
     audioElem = new Audio();
     audioElem.preload = true;
+    //読み込む音源はここだけ変更
     audioElem.src = "Music/Sample.mp3";
     audioElem.loop = false;
+
+    /*TrackName*/
+    var url = audioElem.src;
+    var filename_ex = url.match(".+/(.+?)([\?#;].*)?$")[1];
 
     function PlaySound(){
       audioElem.pause();
@@ -90,20 +95,25 @@
 
     var Track = new Vue({
       el: "#Track",
-      data() {
-        return {
-          Track: "Sample.mp3",
+      data(){
+        return{
+          Track: filename_ex
         }
       }
     });
 
-    var Size = new Vue({
-      el: "#Size",
-      data() {
-        return {
-          Size: "XXXKB",
+    var Time = new Vue({
+      el: "#Time",
+      data(){
+        return{
+          Time: "00:00:00"
         }
       }
+      // computed:{
+      //   Time: function Times(){
+      //     return audioElem.currentTime;
+      //   }
+      // }
     });
 
     var Recently = new Vue({
