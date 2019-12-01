@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html"/>
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Teko&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="CSS/common.css">
   </head>
   <body>
 
@@ -27,14 +27,17 @@
         </div>
     
         <div id="loop">
-            <button v-on:click="Loop">Loop</button>
+            <input type="checkbox" id="box-1">
+            <label for="box-1">Loop</label>
+          <!--<p>Loop
+            <input v-on:click="Loop" Velue="Loop" type="checkbox"></p>-->
         </div>
       </div>
 
       <div id="caption">
-        <p id = "Track">Track: {{track}}</p>
-        <p id = "Artist">Artist: {{artist}}</p>
-        <p id = "Album">Album: {{album}}</p>
+          <p id="Track">Track： <span id="name">{{Track}}</span></p>
+          <p id="Size">Size： <span id="size">{{Size}}</span</p>
+          <p id="Recently">Recently： <span id="daytime">{{Recently}}</span></p>
       </div>
   </div>
 
@@ -50,32 +53,20 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     /*平文*/
-    /*水平*/
-    var x = window.pageXOffset;
-    /*垂直*/
-    var y = window.pageYOffset;
 
     var audioElem;
-    var audioTime;
-    var TrackName;
+    audioElem = new Audio();
+    audioElem.preload = true;
+    audioElem.src = "Music/Sample.mp3";
 
     function PlaySound(){
-      audioElem = new Audio();
-      audioElem.preload="auto";
-      audioElem.src = "Music/Sample.mp3"
       audioElem.loop = false;
+      audioElem.pause();
       audioElem.play();
     }
 
     function StopSound(){
       audioElem.pause();
-    }
-
-    function GetMusicTime(){
-      audioElem.addEventListener('loadedmetadata',function(e) {
-      audioTime = audioElem.duration / 60; // 総時間の取得
-      });
-      return audioTime;
     }
 
     function Loop(){
@@ -93,6 +84,33 @@
       data() {
         return {
           message: "Vue-Music",
+        }
+      }
+    });
+
+    var Track = new Vue({
+      el: "#Track",
+      data() {
+        return {
+          Track: "Sample.mp3",
+        }
+      }
+    });
+
+    var Size = new Vue({
+      el: "#Size",
+      data() {
+        return {
+          Size: "XXXKB",
+        }
+      }
+    });
+
+    var Recently = new Vue({
+      el: "#Recently",
+      data() {
+        return {
+          Recently: "2019-12-XX",
         }
       }
     });

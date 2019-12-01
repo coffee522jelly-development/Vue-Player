@@ -107,7 +107,7 @@ div#stop button:hover{
     opacity:0.9;
 }
 
-div#loop button{
+div#loop{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 12px;
     width:100px;
@@ -120,7 +120,7 @@ div#loop button{
     border: 0;
 }
 
-div#loop button:hover{
+div#loop:hover{
     opacity:0.9;
 }
 
@@ -131,6 +131,49 @@ div#loop button:hover{
     text-decoration-line: underline;
     z-index:10;
 }
+
+  /*Checkboxes styles*/
+  input[type="checkbox"] { display: none; }
+  
+  input[type="checkbox"] + label {
+    display: block;
+    position: relative;
+    color: #ddd;
+    cursor: pointer;
+    margin-top:4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  
+  input[type="checkbox"] + label:last-child { margin-bottom: 0; }
+  
+  input[type="checkbox"] + label:before {
+    content: '';
+    display: block;
+    margin-top:3px;
+    width: 15px;
+    height: 15px;
+    border: 0.1px solid #ffffff;
+    position: absolute;
+    left: 10px;
+    top: 0;
+    opacity: 0.7;
+    -webkit-transition: all .12s, border-color .08s;
+    transition: all .12s, border-color .08s;
+  }
+  
+  input[type="checkbox"]:checked + label:before {
+    width: 10px;
+    top: -4px;
+    left: 10px;
+    border-radius: 0;
+    opacity: 1;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
 
 /*ダークモードの場合*/
 @media (prefers-color-scheme: dark) {
