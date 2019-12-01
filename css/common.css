@@ -1,0 +1,150 @@
+[v-cloak] {
+    display: none;
+  }
+
+body{
+    display: grid;
+	grid-template-columns: 100vw;
+	grid-template-rows: 100vh;
+ 
+	background: #eee;
+	line-height: 1.5em;
+}
+
+#header {
+    font-family: 'Anton', sans-serif;
+    position: fixed; /* ヘッダーを固定する */
+    top: 0; /* 上部から配置の基準位置を決める */
+    left: 0; /* 左から配置の基準位置を決める */
+    width: 100%; /* ヘッダーの横幅を指定する */
+    height: 55px; /* ヘッダーの高さを指定する */
+    padding: 0; /* ヘッダーの余白を指定する(上下左右) */
+    padding-left:20px;
+    background-color: #333; /* ヘッダーの背景色を指定する */
+    color: white; /* フォントの色を指定する */
+}
+
+#footer {
+    font-family: 'Anton', sans-serif;
+    position: fixed; /* ヘッダーを固定する */
+    text-align:center;
+    font-size:10px;
+    bottom: 0; /* 上部から配置の基準位置を決める */
+    left: 0; /* 左から配置の基準位置を決める */
+    width: 100%; /* ヘッダーの横幅を指定する */
+    height: 55px; /* ヘッダーの高さを指定する */
+    padding: 0; /* ヘッダーの余白を指定する(上下左右) */
+    padding-left:20px;
+    background-color: #333; /* ヘッダーの背景色を指定する */
+    color: white; /* フォントの色を指定する */
+}
+
+#ArtWork{
+    justify-self: center;
+	align-self: center;
+	padding: 15px 30px;
+	color: #fff;
+	width: 600px;
+    text-align: center;
+    filter: drop-shadow(5px 5px 5px #000);
+}
+
+#caption{
+    font-size:12px;
+    width:500px;
+    margin-top:-430px;
+    margin-left:50px;
+    height:70px;
+    background-color: #000;
+    opacity:0.6;
+}
+#caption p{
+    font-family: 'Anton', sans-serif;
+    height:10px;
+    text-align: left;
+    padding-left:10px;
+}
+
+#app{
+    text-align:center;
+    margin-top:-37px;
+    margin-left:249px;
+    z-index:-10;
+}
+
+div#play button{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    width:100px;
+    height:30px;
+    opacity:0.4;
+    outline: none;
+    float: left;
+    color:white;
+    background-color: #000;
+    border: 0; 
+}
+
+div#play button:hover{
+    opacity:0.9;
+}
+
+div#stop button{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    width:100px;
+    height:30px;
+    opacity:0.4;
+    outline: none;
+    float: left;
+    color:white;
+    background-color: #000;
+    text-decoration:none;
+    border: 0; 
+}
+
+div#stop button:hover{
+    opacity:0.9;
+}
+
+div#loop button{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    width:100px;
+    height:30px;
+    opacity:0.4;
+    outline: none;
+    float: left;
+    color:white;
+    background-color: #000;
+    border: 0;
+}
+
+div#loop button:hover{
+    opacity:0.9;
+}
+
+#let
+{
+    font-size:200px;
+    margin-top:-50x;
+    text-decoration-line: underline;
+    z-index:10;
+}
+
+/*ダークモードの場合*/
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #222;
+    color: #fff;
+  }
+}
+
+/*レスポンシブ対応*/
+@media screen and (max-width: 481px){
+#ArtWork img{
+    height:240px;
+    width:240px;
+    }
+}
+

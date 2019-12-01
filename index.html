@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Teko&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+  </head>
+  <body>
+
+  <div id="header"　v-cloak>
+    <p>{{message}}</p>
+  </div>
+
+  <div id="ArtWork">
+    <img src="Picture/Sample.jpg" height="500px" width="500px">
+    <div id="app">
+        <!--<input type="file" accept="audio/*">-->
+        <div id="play">
+        <button v-on:click="Play">Play</button>
+        </div>
+    
+        <div id="stop">
+        <button v-on:click="Stop">Stop</button>
+        </div>
+    
+        <div id="loop">
+            <button v-on:click="Loop">Loop</button>
+        </div>
+      </div>
+
+      <div id="caption">
+        <p id = "Track">Track: {{track}}</p>
+        <p id = "Artist">Artist: {{artist}}</p>
+        <p id = "Album">Album: {{album}}</p>
+      </div>
+  </div>
+
+  <div id="text">
+    <p id="let">Title:XXX</p>
+  </div>
+
+  <div id="footer">
+    <p id="credit">© Coffee-Production</p>
+  </div>
+
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    /*平文*/
+    /*水平*/
+    var x = window.pageXOffset;
+    /*垂直*/
+    var y = window.pageYOffset;
+
+    var audioElem;
+    var audioTime;
+    var TrackName;
+
+    function PlaySound(){
+      audioElem = new Audio();
+      audioElem.preload="auto";
+      audioElem.src = "Music/Sample.mp3"
+      audioElem.loop = false;
+      audioElem.play();
+    }
+
+    function StopSound(){
+      audioElem.pause();
+    }
+
+    function GetMusicTime(){
+      audioElem.addEventListener('loadedmetadata',function(e) {
+      audioTime = audioElem.duration / 60; // 総時間の取得
+      });
+      return audioTime;
+    }
+
+    function Loop(){
+      if(audioElem.loop){
+        audioElem.loop = false;
+      }
+      else{
+        audioElem.loop = true;
+      }
+    }
+
+    /*Vue.js*/
+    var header = new Vue({
+      el: "#header",
+      data() {
+        return {
+          message: "Vue-Music",
+        }
+      }
+    });
+    
+    var play = new Vue({
+      el: '#play',
+      methods:{
+        Play: function (event){
+        PlaySound();
+        }
+      }
+    });
+
+    var stop = new Vue({
+      el: '#stop',
+      methods:{
+        Stop: function (event){
+        StopSound();
+        }
+      }
+    });
+
+    var loop = new Vue({
+      el: '#loop',
+      methods:{
+        Loop: function (event){
+        Loop();
+        }
+      }
+    });
+
+  </script>
+</html>
