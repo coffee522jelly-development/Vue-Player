@@ -58,9 +58,9 @@
     audioElem = new Audio();
     audioElem.preload = true;
     audioElem.src = "Music/Sample.mp3";
+    audioElem.loop = false;
 
     function PlaySound(){
-      audioElem.loop = false;
       audioElem.pause();
       audioElem.play();
     }
@@ -83,7 +83,7 @@
       el: "#header",
       data() {
         return {
-          message: "Vue-Music",
+          message: "Vue-MusicPlayer",
         }
       }
     });
