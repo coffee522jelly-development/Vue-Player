@@ -1,7 +1,3 @@
-[v-cloak] {
-    display: none;
-  }
-
 body{
     display: grid;
 	grid-template-columns: 100vw;
@@ -131,7 +127,6 @@ div#loop:hover{
     text-decoration-line: underline;
     z-index:10;
 }
-
   /*Checkboxes styles*/
   input[type="checkbox"] { display: none; }
   
